@@ -1,0 +1,20 @@
+<h1>AniClothing</h1>
+<mat-card *ngIf="disapear">
+  <mat-card-title style="margin: 10px;">Login</mat-card-title>
+<mat-card-content>
+<form (submit)="log($event)">
+<p>
+  <mat-form-field>
+    <input matInput placeholder="Username">
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field>
+    <input matInput placeholder="Password">
+  </mat-form-field>
+</p>
+  <button mat-button>Login</button>
+</form>
+</mat-card-content>
+</mat-card>

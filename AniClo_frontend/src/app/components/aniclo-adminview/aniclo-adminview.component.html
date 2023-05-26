@@ -1,0 +1,46 @@
+<div>
+
+  <h3>Bearbeiten von Clothing</h3>
+
+  <form>
+
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Hersteller</mat-label>
+        <input type="text" matInput required />
+      </mat-form-field>
+
+      <label for="multiplayer">Multiplayer</label>
+      <mat-radio-group id="multiplayer" >
+        <mat-radio-button>Ja</mat-radio-button>
+        <mat-radio-button>Nein</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <mat-label>Konsole</mat-label>
+        <mat-select multiple>
+          <mat-option>
+            xy
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <mat-select>
+          <mat-option>
+            Genre
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="disabled" type="reset">Abbrechen</button>
+      <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+  </form>
+
+</div>

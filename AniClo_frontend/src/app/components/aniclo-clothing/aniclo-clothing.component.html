@@ -1,0 +1,65 @@
+<div>
+  <mat-card>
+    <h1>Angebote:</h1>
+    <button mat-fab extended color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+  <h2>Filter:</h2>
+  <mat-grid-list cols="2" rowHeight="2:1" aria-expanded="true">
+    <mat-grid-tile>
+  <mat-form-field>
+    <mat-label>Farbe</mat-label>
+    <mat-select>
+      <mat-option>
+        Rot
+      </mat-option>
+      <mat-option>
+        Blau
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-grid-tile>
+
+<mat-grid-tile>
+  <mat-form-field>
+    <mat-label>Grösse</mat-label>
+    <mat-select>
+      <mat-option>
+        41
+      </mat-option>
+      <mat-option>
+        42
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-grid-tile>
+</mat-grid-list>
+
+  <mat-grid-list cols="3" rowHeight="3:5">
+    <mat-grid-tile>
+  <mat-card class="content-card">
+    <mat-card-content>
+      <h2>PullName</h2>
+      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
+    </mat-card-content>
+  </mat-card>
+</mat-grid-tile>
+<mat-grid-tile>
+  <mat-card class="content-card">
+    <mat-card-content>
+      <h2>PullName</h2>
+      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
+    </mat-card-content>
+  </mat-card>
+</mat-grid-tile>
+<mat-grid-tile>
+  <mat-card class="content-card">
+    <mat-card-content>
+      <h2>PullName</h2>
+      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
+    </mat-card-content>
+  </mat-card>
+</mat-grid-tile>
+</mat-grid-list>
+</mat-card>
+</div>
