@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppAuthService } from 'src/app/services/app.auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,32 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router){
+  username = ''
+  useralias = ''
+
+  constructor(
+    private authService : AppAuthService, private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.usernameObservable.subscribe(name => {
+      this.username = name;
+    });
+    this.authService.useraliasObservable.subscribe(alias => {
+      this.useralias = alias;
+    });
+  }
+
+  public login () {
+    this.authService.login()
+  }
+
+  public logout () {
+    this.authService.logout()
+  }
+
+  public isAuthenticated () : boolean {
+    return this.authService.isAuthenticated()
   }
 
   clothing = '/clothing'

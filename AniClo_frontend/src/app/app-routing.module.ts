@@ -4,6 +4,9 @@ import { AnicloClothingComponent } from './components/aniclo-clothing/aniclo-clo
 import { AnicloDetailComponent } from './components/aniclo-detail/aniclo-detail.component';
 import { AnicloAdminviewComponent } from './components/aniclo-adminview/aniclo-adminview.component';
 import { LoginComponent } from './components/login/login.component';
+import { NoAccessComponent } from './components/no-access/no-access.component';
+import { AppRoles } from './app.roles';
+import { AppAuthGuard } from './guard/app.auth.guard';
 
 const routes: Routes = [
   {
@@ -12,7 +15,12 @@ const routes: Routes = [
   },
   {
     path: 'clothings',
-    component: AnicloClothingComponent
+    pathMatch: 'full',
+    component: AnicloClothingComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read]
+    }
   },
   {
     path: 'clothing/:id',
@@ -20,9 +28,17 @@ const routes: Routes = [
     component: AnicloDetailComponent
   },
   {
+    path: 'noaccess',
+    component: NoAccessComponent
+},
+  {
     path: 'edit',
     pathMatch: 'full',
-    component: AnicloAdminviewComponent
+    component: AnicloAdminviewComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Admin],
+    }
   }
 ];
 

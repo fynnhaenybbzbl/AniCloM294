@@ -16,8 +16,34 @@ import {MatSelectModule} from '@angular/material/select';
 import { AnicloAdminviewComponent } from './components/aniclo-adminview/aniclo-adminview.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { LoginComponent } from './components/login/login.component';
+import { NoAccessComponent } from './components/no-access/no-access.component';
+import { MatChipsModule } from '@angular/material/chips';
 
+import { environment } from './environments/environment';
+import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { AppAuthGuard } from './guard/app.auth.guard';
+import { AppAuthService } from './services/app.auth.service';
+import { IsInRolesDirective } from './directives/is-in-roles.dir';
+import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
+export const authConfig: AuthConfig = {
+  issuer: 'http://localhost:8080/realms/ILV',
+  requireHttps: false,
+  redirectUri: environment.frontendBaseUrl,
+  postLogoutRedirectUri: environment.frontendBaseUrl,
+  clientId: 'demoapp',
+  scope: 'openid profile roles offline_access',
+  responseType: 'code',
+  showDebugInformation: true,
+  requestAccessToken: true,
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshTimeout: 500,
+  clearHashAfterLogin: true,
+};
+
+export function storageFactory(): OAuthStorage {
+  return sessionStorage;
+}
 
 @NgModule({
   declarations: [
@@ -25,7 +51,9 @@ import { LoginComponent } from './components/login/login.component';
     AnicloClothingComponent,
     AnicloDetailComponent,
     AnicloAdminviewComponent,
-    LoginComponent
+    LoginComponent,
+    NoAccessComponent,
+    IsInRolesDirective
   ],
   imports: [
     BrowserModule,
@@ -38,9 +66,33 @@ import { LoginComponent } from './components/login/login.component';
     MatInputModule,
     MatGridListModule,
     MatSelectModule,
-    MatRadioModule
+    MatChipsModule,
+    MatRadioModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    }),
+    OAuthModule.forRoot({
+      resourceServer: {
+        sendAccessToken: true
+      }
+    }),
   ],
-  providers: [],
+  providers: [
+  {
+    provide: AuthConfig,
+    useValue: authConfig
+  },
+  {
+    provide: OAuthStorage,
+    useFactory: storageFactory
+  },
+  AppAuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(authService: AppAuthService) {
+    authService.initAuth().finally()
+  }
+}

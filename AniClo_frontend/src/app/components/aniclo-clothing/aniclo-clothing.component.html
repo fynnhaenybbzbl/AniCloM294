@@ -1,11 +1,25 @@
 <div>
   <mat-card>
     <h1>Angebote:</h1>
+
+    <mat-grid-list cols="3" rowHeight="5:1" aria-expanded="true">
+      <mat-grid-tile>
+        <h2>Filter:</h2>
+      </mat-grid-tile>
+      <mat-grid-tile>
     <button mat-fab extended color="primary">
       <mat-icon>edit</mat-icon>
     </button>
-  <h2>Filter:</h2>
-  <mat-grid-list cols="2" rowHeight="2:1" aria-expanded="true">
+  </mat-grid-tile>
+<mat-grid-tile>
+    <button (click)="logout()" color="warn" mat-button>
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="4:1" aria-expanded="true">
     <mat-grid-tile>
   <mat-form-field>
     <mat-label>Farbe</mat-label>
@@ -61,5 +75,6 @@
   </mat-card>
 </mat-grid-tile>
 </mat-grid-list>
+
 </mat-card>
 </div>

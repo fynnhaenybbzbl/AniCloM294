@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppAuthService } from 'src/app/services/app.auth.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AnicloClothingComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService : AppAuthService) {
 
   }
 
@@ -19,6 +20,10 @@ export class AnicloClothingComponent {
 
   navigateToEdit() {
     this.router.navigate(["/edit"])
+  }
+
+  public logout () {
+    this.authService.logout()
   }
 
 }
