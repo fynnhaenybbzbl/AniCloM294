@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppAuthService } from './services/app.auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'AniClo_frontend';
 
-  constructor(private router: Router){
+  constructor(){
   }
+
 
 }
