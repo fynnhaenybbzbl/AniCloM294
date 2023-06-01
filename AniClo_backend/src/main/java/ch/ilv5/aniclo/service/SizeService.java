@@ -36,8 +36,6 @@ public class SizeService {
         return sizeRepository.findById(id)
                 .map(sizeDB -> {
                     sizeDB.setEu(size.getEu());
-                    sizeDB.setFra(size.getFra());
-                    sizeDB.setUsa(size.getUsa());
                     return sizeRepository.save(sizeDB);
                 })
                 .orElseGet(() -> sizeRepository.save(size));

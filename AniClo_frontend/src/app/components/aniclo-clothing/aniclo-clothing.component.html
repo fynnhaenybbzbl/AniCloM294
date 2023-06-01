@@ -6,9 +6,9 @@
       <mat-grid-tile>
         <h2>Filter:</h2>
       </mat-grid-tile>
-      <mat-grid-tile>
-    <button mat-fab extended color="primary">
-      <mat-icon>edit</mat-icon>
+      <mat-grid-tile >
+    <button *ngIf="isAdmin" mat-fab extended color="primary" routerLink="/edit">
+      <mat-icon>playlist_add</mat-icon>
     </button>
   </mat-grid-tile>
 <mat-grid-tile>
@@ -24,11 +24,8 @@
   <mat-form-field>
     <mat-label>Farbe</mat-label>
     <mat-select>
-      <mat-option>
-        Rot
-      </mat-option>
-      <mat-option>
-        Blau
+      <mat-option *ngFor="let colours of colour">
+        {{colours.farbe}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -38,11 +35,8 @@
   <mat-form-field>
     <mat-label>Grösse</mat-label>
     <mat-select>
-      <mat-option>
-        41
-      </mat-option>
-      <mat-option>
-        42
+      <mat-option *ngFor="let sizes of size">
+        {{sizes.eu}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -50,30 +44,15 @@
 </mat-grid-list>
 
   <mat-grid-list cols="3" rowHeight="3:5">
-    <mat-grid-tile>
+    <mat-grid-tile *ngFor="let clothings of clothing">
   <mat-card class="content-card">
     <mat-card-content>
-      <h2>PullName</h2>
-      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
+      <h2>{{clothings.name}}</h2>
+      <img [routerLink]="['/clothing', clothings.id]" mat-card-image src="../../../assets/clothing.png">
     </mat-card-content>
   </mat-card>
 </mat-grid-tile>
-<mat-grid-tile>
-  <mat-card class="content-card">
-    <mat-card-content>
-      <h2>PullName</h2>
-      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
-    </mat-card-content>
-  </mat-card>
-</mat-grid-tile>
-<mat-grid-tile>
-  <mat-card class="content-card">
-    <mat-card-content>
-      <h2>PullName</h2>
-      <img (click)="navigateToClothing()" mat-card-image src="../../../assets/clothing.jpg">
-    </mat-card-content>
-  </mat-card>
-</mat-grid-tile>
+
 </mat-grid-list>
 
 </mat-card>

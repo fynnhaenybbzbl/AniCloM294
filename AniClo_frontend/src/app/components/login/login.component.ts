@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppAuthService } from 'src/app/services/app.auth.service';
 
@@ -7,7 +7,7 @@ import { AppAuthService } from 'src/app/services/app.auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   username = ''
   useralias = ''

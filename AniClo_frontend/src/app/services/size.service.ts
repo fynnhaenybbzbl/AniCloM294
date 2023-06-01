@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 })
 export class SizeService {
 
-  readonly backendUrl = 'game';
+  readonly backendUrl = 'size';
 
   constructor(private http: HttpClient) {
   }
@@ -24,13 +24,13 @@ export class SizeService {
   }
 
   public update(Size: Size): Observable<Size> {
-    return this.http.put<Size>(environment.backendBaseUrl + this.backendUrl + `/${Size.id}`, Size);
+    return this.http.put<Size>(environment.backendBaseUrl + 'updateSize' + `/${Size.id}`, Size);
   }
 
   public save(Size: Size): Observable<Size> {
-    return this.http.post<Size>(environment.backendBaseUrl + this.backendUrl, Size);
+    return this.http.post<Size>(environment.backendBaseUrl + 'postSize', Size);
   }
 
   public delete(id: number): Observable<HttpResponse<string>> {
-    return this.http.delete<string>(environment.backendBaseUrl + this.backendUrl + `/${id}`, {observe: 'response'});
+    return this.http.delete<string>(environment.backendBaseUrl + 'deleteSize' + `/${id}`, {observe: 'response'});
   }}

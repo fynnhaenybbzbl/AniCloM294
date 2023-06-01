@@ -1,1 +1,64 @@
-<p>aniclo-detail works!</p>
+<div>
+  <mat-card>
+    <h1>{{clothing.name}}</h1>
+    <button (click)="edit(clothing)"><mat-icon>edit</mat-icon></button>
+    <button><mat-icon>delete</mat-icon></button>
+    <mat-grid-list cols="4" rowHeight="3:16">
+      <mat-grid-tile [colspan]="3">
+        <mat-tab-group>
+          <mat-tab label="Bild 1">
+            <mat-card class="content-card">
+              <mat-card-content>
+                <img mat-card-image src="../../../assets/clothing.png">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Bild 2">
+            <mat-card class="content-card">
+              <mat-card-content>
+                <img mat-card-image src="../../../assets/clothing1.png">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Bild 3">
+            <mat-card class="content-card">
+              <mat-card-content>
+                <img mat-card-image src="../../../assets/clothing2.png">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Bild 4">
+            <mat-card class="content-card">
+              <mat-card-content>
+                <img mat-card-image src="../../../assets/clothing3.png">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Bild 5">
+            <mat-card class="content-card">
+              <mat-card-content>
+                <img mat-card-image src="../../../assets/clothing4.png">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card style="background-color: white; color: black;" class="content-card">
+      <mat-card-content>
+        <h2> Marke: {{clothing.marke}}</h2>
+        <h2>Preis: {{clothing.preis}} CHF</h2>
+        <h2>Grösse: {{clothing.size.eu}}</h2>
+        <h2>Farbe: {{clothing.colour.farbe}}</h2>
+        <h2>Ort: </h2>
+        <h3>Postleitzahl: {{clothing.places.plz}}</h3>
+        <h3>Ortsname: {{clothing.places.ortsname}}</h3>
+        <h3>Strasse: {{clothing.places.strasse}} {{clothing.places.strassennummer}}</h3>
+        <button (click)="openGoogleMaps()">Google Maps öffnen</button>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+    </mat-grid-list>
+    <p>Bilder von Zalando</p>
+</mat-card>
+</div>

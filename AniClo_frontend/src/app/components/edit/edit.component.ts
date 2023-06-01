@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Clothing } from 'src/app/data/clothing';
 import { Colour } from 'src/app/data/colour';
@@ -11,11 +11,11 @@ import { PlacesService } from 'src/app/services/places.service';
 import { SizeService } from 'src/app/services/size.service';
 
 @Component({
-  selector: 'app-aniclo-adminview',
-  templateUrl: './aniclo-adminview.component.html',
-  styleUrls: ['./aniclo-adminview.component.scss']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class AnicloAdminviewComponent implements OnInit {
+export class EditComponent  implements OnInit {
   size : Array<Size> = new Array<Size>()
   colour : Array<Colour> = new Array<Colour>()
   clothing : Clothing = new Clothing()
@@ -37,7 +37,9 @@ export class AnicloAdminviewComponent implements OnInit {
     private colourService: ColourService,
     private clothingService: ClothingService,
     private placesService: PlacesService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
+
   ){}
 
   public compareOptions(o1 : any, o2 : any): boolean{
@@ -48,9 +50,10 @@ export class AnicloAdminviewComponent implements OnInit {
     await this.router.navigate(['clothings'])
   }
 
-  async save (formData: any) {
+  async update (formData: any) {
     this.clothing = Object.assign(formData)
 
+    if (this.clothing.id) {
       this.clothingService.update(this.clothing).subscribe({
         next: () => {
           this.back()
@@ -59,6 +62,7 @@ export class AnicloAdminviewComponent implements OnInit {
 
         }
       })
+    }
   }
 
   async ngOnInit () {

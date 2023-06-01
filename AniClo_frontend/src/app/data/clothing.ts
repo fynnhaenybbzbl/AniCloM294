@@ -4,11 +4,11 @@ import { Size } from "./size"
 
 export class Clothing {
   public id!: number
-  public name: string = ''
-  public marke: string = ''
+  public name = ''
+  public marke = ''
   public preis!: number
-  public size : Array<Size> = []
-  public colour: Array<Colour> = []
-  public places: Array<Places> = []
+  public size : Size = new Size()
+  public colour: Colour = new Colour
+  public places: Places = new Places()
 
 }

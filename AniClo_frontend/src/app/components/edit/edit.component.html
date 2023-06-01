@@ -2,7 +2,7 @@
 
   <h3>Erstellen von Kleidern</h3>
 
-  <form (ngSubmit)="save(form.value)" [formGroup]="form!">
+  <form (ngSubmit)="update(form.value)" [formGroup]="form!">
 
       <mat-form-field>
         <mat-label>Name</mat-label>
@@ -52,7 +52,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-flat-button color="disabled" type="reset" routerLink="/clothings" (click)="back">Abbrechen</button>
+      <button mat-flat-button color="disabled" type="reset" (click)="back">Abbrechen</button>
       <button mat-raised-button color="primary" type="submit">Speichern</button>
 
   </form>

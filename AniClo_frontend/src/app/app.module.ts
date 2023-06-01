@@ -18,13 +18,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { LoginComponent } from './components/login/login.component';
 import { NoAccessComponent } from './components/no-access/no-access.component';
 import { MatChipsModule } from '@angular/material/chips';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { environment } from './environments/environment';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 import { AppAuthGuard } from './guard/app.auth.guard';
 import { AppAuthService } from './services/app.auth.service';
 import { IsInRolesDirective } from './directives/is-in-roles.dir';
-import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { EditComponent } from './components/edit/edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV',
@@ -53,7 +56,8 @@ export function storageFactory(): OAuthStorage {
     AnicloAdminviewComponent,
     LoginComponent,
     NoAccessComponent,
-    IsInRolesDirective
+    IsInRolesDirective,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ export function storageFactory(): OAuthStorage {
     MatSelectModule,
     MatChipsModule,
     MatRadioModule,
+    MatTabsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
@@ -78,6 +83,7 @@ export function storageFactory(): OAuthStorage {
         sendAccessToken: true
       }
     }),
+    ReactiveFormsModule
   ],
   providers: [
   {

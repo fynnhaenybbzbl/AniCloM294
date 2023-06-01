@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppAuthService } from './services/app.auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +7,5 @@ import { AppAuthService } from './services/app.auth.service';
 })
 export class AppComponent {
   title = 'AniClo_frontend';
-
-  constructor(){
-  }
-
 
 }

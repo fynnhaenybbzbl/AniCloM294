@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-no-access',
@@ -7,8 +6,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./no-access.component.scss']
 })
 export class NoAccessComponent {
-
-  constructor() {}
-
 
 }
