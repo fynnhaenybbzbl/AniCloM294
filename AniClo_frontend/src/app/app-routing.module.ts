@@ -29,7 +29,11 @@ const routes: Routes = [
   {
     path: 'clothing/:id',
     pathMatch: 'full',
-    component: AnicloDetailComponent
+    component: AnicloDetailComponent,
+    canActivate: [AppAuthGuard],
+    data: {
+      roles: [AppRoles.Read]
+    }
   },
   {
     path: 'noaccess',
