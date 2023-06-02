@@ -17,4 +17,8 @@ public class Size {
 
     @Column(nullable = false)
     private int eu;
+
+    public Size(int eu) {
+        this.eu = eu;
+    }
 }

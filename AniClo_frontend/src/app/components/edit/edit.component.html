@@ -21,7 +21,7 @@
 
       <mat-form-field>
         <mat-label>Grösse</mat-label>
-        <mat-select formControlName="size">
+        <mat-select   [compareWith]="compareOptions" formControlName="size">
           <mat-option [value]="sizes" *ngFor="let sizes of size">
             {{sizes.eu}}
           </mat-option>
@@ -42,7 +42,7 @@
       <mat-form-field>
         <mat-label>Ort</mat-label>
         <mat-select
-        formControlName="places">
+        [compareWith]="compareOptions"        formControlName="places">
           <mat-option [value]="places" *ngFor="let places of place">
             {{places.plz}},
             {{places.ortsname}},
@@ -52,7 +52,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-flat-button color="disabled" type="reset" (click)="back">Abbrechen</button>
+      <button mat-flat-button color="disabled" type="reset" routerLink="/clothings" (click)="back">Abbrechen</button>
       <button mat-raised-button color="primary" type="submit">Speichern</button>
 
   </form>

@@ -4,7 +4,6 @@
 
     <mat-grid-list cols="3" rowHeight="5:1" aria-expanded="true">
       <mat-grid-tile>
-        <h2>Filter:</h2>
       </mat-grid-tile>
       <mat-grid-tile >
     <button *ngIf="isAdmin" mat-fab extended color="primary" routerLink="/edit">
@@ -19,30 +18,6 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-  <mat-grid-list cols="2" rowHeight="4:1" aria-expanded="true">
-    <mat-grid-tile>
-  <mat-form-field>
-    <mat-label>Farbe</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let colours of colour">
-        {{colours.farbe}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</mat-grid-tile>
-
-<mat-grid-tile>
-  <mat-form-field>
-    <mat-label>Grösse</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let sizes of size">
-        {{sizes.eu}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</mat-grid-tile>
-</mat-grid-list>
-
   <mat-grid-list cols="3" rowHeight="3:5">
     <mat-grid-tile *ngFor="let clothings of clothing">
   <mat-card class="content-card">
@@ -54,6 +29,7 @@
 </mat-grid-tile>
 
 </mat-grid-list>
+<button routerLink="/">Zurück</button>
 
 </mat-card>
 </div>

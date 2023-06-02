@@ -19,6 +19,9 @@ import { LoginComponent } from './components/login/login.component';
 import { NoAccessComponent } from './components/no-access/no-access.component';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 
 import { environment } from './environments/environment';
 import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
@@ -28,6 +31,9 @@ import { IsInRolesDirective } from './directives/is-in-roles.dir';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { EditComponent } from './components/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PlacesComponent } from './components/places/places.component';
+import { EditPlaceComponent } from './components/edit-place/edit-place.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV',
@@ -57,7 +63,10 @@ export function storageFactory(): OAuthStorage {
     LoginComponent,
     NoAccessComponent,
     IsInRolesDirective,
-    EditComponent
+    EditComponent,
+    NotFoundComponent,
+    PlacesComponent,
+    EditPlaceComponent
   ],
   imports: [
     BrowserModule,
@@ -69,10 +78,13 @@ export function storageFactory(): OAuthStorage {
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
+    MatTableModule,
     MatSelectModule,
     MatChipsModule,
     MatRadioModule,
+    MatDialogModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',

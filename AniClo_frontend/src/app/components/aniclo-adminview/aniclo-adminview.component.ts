@@ -19,10 +19,13 @@ export class AnicloAdminviewComponent implements OnInit {
   size : Array<Size> = new Array<Size>()
   colour : Array<Colour> = new Array<Colour>()
   clothing : Clothing = new Clothing()
+  colours : Colour = new Colour()
+  sizes : Size = new Size()
+  places : Places = new Places()
   place : Array<Places> = new Array<Places>()
   clothings : Array<Clothing> = new Array<Clothing>()
 
-  public form = new FormGroup({
+  public formClothing = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
     marke: new FormControl(''),
@@ -30,6 +33,14 @@ export class AnicloAdminviewComponent implements OnInit {
     size: new FormControl(),
     colour: new FormControl(''),
     places: new FormControl('')
+  })
+
+  public formPlace = new FormGroup({
+    id: new FormControl(0),
+    plz: new FormControl(),
+    ortsname: new FormControl(''),
+    strasse: new FormControl(''),
+    strassennummer: new FormControl()
   })
 
   constructor(
@@ -48,16 +59,22 @@ export class AnicloAdminviewComponent implements OnInit {
     await this.router.navigate(['clothings'])
   }
 
-  async save (formData: any) {
+  async saveClothing (formData: any) {
     this.clothing = Object.assign(formData)
 
-      this.clothingService.update(this.clothing).subscribe({
+      this.clothingService.save(this.clothing).subscribe({
         next: () => {
           this.back()
         },
-        error: () => {
+      })
+  }
 
-        }
+  async savePlace () {
+    this.places = Object.assign(this.formPlace.getRawValue())
+    this.placesService.save(this.places).subscribe({
+        next: () => {
+          this.back()
+        },
       })
   }
 

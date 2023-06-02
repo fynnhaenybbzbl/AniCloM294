@@ -1,0 +1,27 @@
+<div>
+  <table style="width: 100%">
+    <thead>
+      <tr>
+        <th role="columnheader" scope="col">Postleitzahl</th>
+        <th role="columnheader" scope="col">Ortsname</th>
+        <th role="columnheader" scope="col">Strasse</th>
+        <th role="columnheader" scope="col">Strassennummer</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody class="">
+      <tr class="" *ngFor="let places of place">
+        <td scope="row">{{ places.plz }}</td>
+        <td>{{ places.ortsname }}</td>
+        <td>{{ places.strasse }}</td>
+        <td>{{ places.strassennummer }}</td>
+        <td class="text-right">
+          <button type="button" style="margin-right: 10px;" class="small" (click)="edit(places)"><mat-icon>edit</mat-icon></button>
+          <button type="button" class="small warning" (click)="delete(places)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button routerLink="/edit">Zurück</button>
+</div>

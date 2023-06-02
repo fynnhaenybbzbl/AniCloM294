@@ -1,0 +1,32 @@
+<div>
+
+  <h1>Erstellen von Kleidern</h1>
+
+  <form (ngSubmit)="update(form.value)" [formGroup]="form!">
+
+      <mat-form-field>
+        <mat-label>Postleitzahl</mat-label>
+        <input type="number" formControlName="plz" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ortsname</mat-label>
+        <input type="text" formControlName="ortsname" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Strasse</mat-label>
+        <input type="text" formControlName="strasse" matInput required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Strassennummer</mat-label>
+        <input type="number" formControlName="strassennummer" matInput required />
+      </mat-form-field>
+
+      <button mat-flat-button color="disabled" type="reset" routerLink="/editPlace" (click)="back">Abbrechen</button>
+      <button mat-raised-button color="primary" type="submit">Speichern</button>
+
+  </form>
+
+</div>

@@ -21,4 +21,7 @@ public class Colour {
     @NotEmpty
     private String farbe;
 
+    public Colour(String farbe) {
+        this.farbe = farbe;
+    }
 }

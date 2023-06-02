@@ -23,12 +23,12 @@ export class PlacesService {
     return this.http.get<Places>(environment.backendBaseUrl + this.backendUrl + `/${id}`);
   }
 
-  public update(Places: Places): Observable<Places> {
-    return this.http.put<Places>(environment.backendBaseUrl + 'updatePlace' + `/${Places.id}`, Places);
+  public update(places: Places): Observable<Places> {
+    return this.http.put<Places>(environment.backendBaseUrl + 'updatePlace' + `/${places.id}`, places);
   }
 
-  public save(Places: Places): Observable<Places> {
-    return this.http.post<Places>(environment.backendBaseUrl + 'postPlace', Places);
+  public save(places: Places): Observable<Places> {
+    return this.http.post<Places>(environment.backendBaseUrl + 'postPlace', places);
   }
 
   public delete(id: number): Observable<HttpResponse<string>> {

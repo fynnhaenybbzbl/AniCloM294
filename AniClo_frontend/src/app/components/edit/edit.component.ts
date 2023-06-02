@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Clothing } from 'src/app/data/clothing';
 import { Colour } from 'src/app/data/colour';
 import { Places } from 'src/app/data/places';
@@ -28,8 +28,8 @@ export class EditComponent  implements OnInit {
     marke: new FormControl(''),
     preis: new FormControl(),
     size: new FormControl(),
-    colour: new FormControl(''),
-    places: new FormControl('')
+    colour: new FormControl(),
+    places: new FormControl()
   })
 
   constructor(
@@ -38,7 +38,8 @@ export class EditComponent  implements OnInit {
     private clothingService: ClothingService,
     private placesService: PlacesService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route:ActivatedRoute
 
   ){}
 
@@ -58,16 +59,22 @@ export class EditComponent  implements OnInit {
         next: () => {
           this.back()
         },
-        error: () => {
-
-        }
       })
     }
   }
 
   async ngOnInit () {
     this.reloadData()
+    const id = Number.parseInt(this.route.snapshot.paramMap.get('id') as string);
+    if(id){
+      this.clothingService.getOne(id).subscribe(clothing => {
+        this.clothing = clothing; this.form = this.formBuilder.group(this.clothing);
+        this.form.controls.size.setValue(this.clothing.size);
+        this.form.controls.places.setValue(this.clothing.places)
+      })
+    }
   }
+
 
   reloadData () {
     this.sizeService.getList().subscribe(obj => {

@@ -21,7 +21,7 @@ export class AnicloClothingComponent implements OnInit {
   clothing : Array<Clothing> = new Array<Clothing>()
   roles = AppRoles;
   username = ''
-  isAdmin : boolean = false;
+  isAdmin !: boolean;
 
 
 
@@ -43,8 +43,6 @@ export class AnicloClothingComponent implements OnInit {
     this.authService.usernameObservable.subscribe(name => {
       this.username = name;
     });
-    console.log(this.username);
-
       if (this.username == 'admin admin') {
         this.isAdmin = true;
       }
