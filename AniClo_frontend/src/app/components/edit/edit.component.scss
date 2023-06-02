@@ -1,3 +1,26 @@
 mat-form-field {
   display: flex;
 }
+.content-card {
+  background-color: #3F51B5;
+  margin: 10px;
+  color: white;
+}
+
+button {
+  margin: 10px;
+  background-color: #3F51B5;
+}
+h1 {
+  background-color: #3F51B5;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  margin: 10px;
+}

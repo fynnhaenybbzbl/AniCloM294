@@ -20,8 +20,4 @@ public class Colour {
     @jakarta.validation.constraints.Size(max = 15)
     @NotEmpty
     private String farbe;
-
-    public Colour(String farbe) {
-        this.farbe = farbe;
-    }
 }
